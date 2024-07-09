@@ -33,6 +33,7 @@ include '../../header.php';
 
                                     <div class="form-group">
                                         <button type="submit" name="approve" class="btn btn-primary"><i class="fa fa-search"></i>Cari</button>
+                                        <a href="add_asset.php" type="submit" name="approve" class="btn btn-warning"><i class="fa fa-refresh"></i>Refresh</a>
                                     </div>
 
                                 </form>
