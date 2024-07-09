@@ -31,7 +31,7 @@ include '../../../app/config/koneksi.php';
 
                         <div class="form-group">
                             <label id="resultDisplay" style="width:300px">Scan qr code: </label><br>
-                            <input id="qr-reader-results">
+                            <div id="resultDisplay">Result Here</div>
                         </div>
 
                         <div class="form-group">
