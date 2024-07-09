@@ -1,6 +1,6 @@
 <?php
 include '../../header.php';
-include 'modal.php';
+include 'modal1.php';
 ?>
 
 <div class="container">
@@ -10,6 +10,9 @@ include 'modal.php';
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
+                            <a href="add_asset.php" class="btn btn-primary"> <span class="btn-label">
+                                    <i class="fa fa-plus"></i>
+                                </span>Tambah Data</a>
                             <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <span class="btn-label">
                                     <i class="fa fa-plus"></i>

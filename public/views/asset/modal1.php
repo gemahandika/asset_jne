@@ -1,64 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Scanner</title>
-    <script src="html5-qrcode.min.js"></script>
-    <style>
-        .result {
-            background-color: green;
-            color: #fff;
-            padding: 20px;
-        }
-
-        .row {
-            display: flex;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="row">
-        <div class="col">
-            <div style="width:500px;" id="reader"></div>
-        </div>
-        <div class="col" style="padding:30px;">
-            <div id="resultDisplay">Result Here</div>
-            <div class="form-group">
-                <label for="nama_anggota">Nama Anggota :</label><br>
-                <input class="form-control" type="text" id="nama_anggota" name="nama_anggota">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="form-group">
-                <label for="nama_anggota">Nama Anggota :</label><br>
-                <input class="form-control" type="text" id="nama_anggota" name="nama_anggota">
+            <div class="modal-body">
+                <div class="form-group">
+                    <div id="resultDisplay">Silahkan Discan qr code nya</div>
+                    <div style="width:300px;" id="reader"></div>
+                    <label for="no_asset">Nomor asset :</label><br>
+                    <input class="form-control" type="text" id="no_asset" name="no_asset">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="nama_anggota">Nama Anggota :</label><br>
-                <input class="form-control" type="text" id="nama_anggota" name="nama_anggota">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
+</div>
 
-    <script type="text/javascript">
-        function onScanSuccess(qrCodeMessage) {
-            document.getElementById('resultDisplay').innerHTML = '<span class="result">' + qrCodeMessage + '</span>';
-            document.getElementById('nama_anggota').value = qrCodeMessage;
-        }
+<script src="../../../app/assets/js/html5-qrcode.min.js"></script>
+<script type="text/javascript">
+    function onScanSuccess(qrCodeMessage) {
+        document.getElementById('resultDisplay').innerHTML = '<span class="result">' + qrCodeMessage + '</span>';
+        document.getElementById('no_asset').value = qrCodeMessage;
+    }
 
-        function onScanError(errorMessage) {
-            // handle scan error
-        }
+    function onScanError(errorMessage) {
+        // handle scan error
+    }
 
-        var html5QrcodeScanner = new Html5QrcodeScanner(
+    var html5QrcodeScanner;
+
+    document.getElementById('exampleModal').addEventListener('shown.bs.modal', function() {
+        html5QrcodeScanner = new Html5QrcodeScanner(
             "reader", {
                 fps: 10,
                 qrbox: 250
             }
         );
         html5QrcodeScanner.render(onScanSuccess, onScanError);
-    </script>
-</body>
+    });
 
-</html>
+    document.getElementById('exampleModal').addEventListener('hidden.bs.modal', function() {
+        if (html5QrcodeScanner) {
+            html5QrcodeScanner.clear();
+            html5QrcodeScanner = null;
+        }
+    });
+</script>
