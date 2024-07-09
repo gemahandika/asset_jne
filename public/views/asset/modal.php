@@ -1,12 +1,18 @@
 <?php
-
 include '../../../app/config/koneksi.php';
 
-// if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses'])) {
-//     echo "Ooopss!! Kamu Tidak Punya Akses";
-//     exit();
-// }
 ?>
+<style>
+    .result {
+        background-color: green;
+        color: #fff;
+        padding: 20px;
+    }
+
+    .row {
+        display: flex;
+    }
+</style>
 <!-- Modal Create -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -24,13 +30,14 @@ include '../../../app/config/koneksi.php';
                         <input type="hidden" id="keterangan" name="keterangan" value="iuran bulanan anggota">
 
                         <div class="form-group">
-                            <label id="qr-reader" style="width:300px"> </label><br>
-                            <div id="qr-reader-results"></div>
+                            <label id="resultDisplay" style="width:300px">Scan qr code: </label><br>
+                            <input id="qr-reader-results">
                         </div>
 
                         <div class="form-group">
-                            <label for="nama_anggota">Nama Anggota :</label><br>
+                            <label for="nama_anggota">Nomor Asset :</label><br>
                             <input class="form-control" type="text" id="nama_anggota" name="nama_anggota">
+                            <!-- <input class="form-control" type="text" id="nama_anggota" name="nama_anggota"> -->
                         </div>
                         <div class="form-group">
                             <label for="nip">NIP :</label><br>
@@ -66,36 +73,21 @@ include '../../../app/config/koneksi.php';
 </div>
 
 <script src="html5-qrcode.min.js"></script>
-<script>
-    function docReady(fn) {
-        // see if DOM is already available
-        if (document.readyState === "complete" ||
-            document.readyState === "interactive") {
-            // call on next available tick
-            setTimeout(fn, 1);
-        } else {
-            document.addEventListener("DOMContentLoaded", fn);
-        }
+<script type="text/javascript">
+    function onScanSuccess(qrCodeMessage) {
+        document.getElementById('resultDisplay').innerHTML = '<span class="result">' + qrCodeMessage + '</span>';
+        document.getElementById('nama_anggota').value = qrCodeMessage;
     }
 
-    docReady(function() {
-        var resultContainer = document.getElementById('qr-reader-results');
-        var lastResult, countResults = 0;
+    function onScanError(errorMessage) {
+        // handle scan error
+    }
 
-        function onScanSuccess(decodedText, decodedResult) {
-            if (decodedText !== lastResult) {
-                ++countResults;
-                lastResult = decodedText;
-                // Handle on success condition with the decoded message.
-                console.log(`Scan result ${decodedText}`, decodedResult);
-            }
+    var html5QrcodeScanner = new Html5QrcodeScanner(
+        "reader", {
+            fps: 10,
+            qrbox: 250
         }
-
-        var html5QrcodeScanner = new Html5QrcodeScanner(
-            "qr-reader", {
-                fps: 10,
-                qrbox: 250
-            });
-        html5QrcodeScanner.render(onScanSuccess);
-    });
+    );
+    html5QrcodeScanner.render(onScanSuccess, onScanError);
 </script>
