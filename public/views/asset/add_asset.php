@@ -1,5 +1,7 @@
 <?php
 include '../../header.php';
+$date = date("Y-m-d");
+$time = date("H:i");
 ?>
 <style>
     .result {
@@ -18,107 +20,79 @@ include '../../header.php';
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Tambah Data Maintenance</div>
+                        <div class="card-title">Tambah Data Asset</div>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12 col-lg-4">
-                                <form action="" method="get">
+                    <form action="../../../app/controller/Asset.php" method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-4">
                                     <div class="form-group has-success">
                                         <div id="resultDisplay">Scan Disini</div>
                                         <div style="width:300px;" id="reader"></div><br>
-                                        <label for="no_asset">Nomor asset :</label><br>
+                                        <label for="no_asset">NOMOR ASSET :</label><br>
                                         <input class="form-control" type="text" id="no_asset" name="no_asset">
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" name="approve" class="btn btn-primary"><i class="fa fa-search"></i>Cari</button>
+                                        <!-- <button type="submit" name="approve" class="btn btn-primary"><i class="fa fa-search"></i>Cari</button> -->
                                         <a href="add_asset.php" type="submit" name="approve" class="btn btn-warning"><i class="fa fa-refresh"></i>Refresh</a>
                                     </div>
 
-                                </form>
-                                <?php
-                                if (isset($_GET['no_asset'])) {
-                                    $no_asset = $_GET['no_asset'];
-                                    $sql = mysqli_query($koneksi, "SELECT * FROM asset WHERE no_asset = '$no_asset'") or die(mysqli_error($koneksi));
-                                    if (mysqli_num_rows($sql) > 0) {
-                                        $data1 = $sql->fetch_array();
-                                    } else {
-                                        $data1['nama_barang'] = "Data not found";
-                                        $data1['katagori'] = "Data not found";
-                                        $data1['branch'] = "Data not found";
-                                        $data1['unit'] = "Data not found";
-                                    }
-                                }
-                                ?>
+                                    <div class="form-group">
+                                        <label for="branch">BRANCH <strong class="text-danger">*</strong> </label><br>
+                                        <input class="form-control" type="text" id="branch" name="branch" required>
+                                    </div>
 
+                                    <div class="form-group">
+                                        <label for="nama_barang">NAMA BARANG <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="text" id="nama_barang" name="nama_barang" required>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="nama_barang">Nama Barang :</label><br>
-                                    <input class="form-control" type="text" id="nama_barang" name="nama_barang" value="<?= $data1['nama_barang']; ?>" readonly>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="tgl_pembelian">TANGGAL PEMBELIAN :</label><br>
+                                        <input class="form-control" type="date" id="tgl_pembelian" name="tgl_pembelian" value="<?= $date ?>" required>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="katagori">Katagori :</label><br>
-                                    <input class="form-control" type="text" id="katagori" name="katagori" value="<?= $data1['katagori']; ?>" readonly>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="unit">UNIT <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="text" id="unit" name="unit" required>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="branch">Branch :</label><br>
-                                    <input class="form-control" type="text" id="branch" name="branch" value="<?= $data1['branch']; ?>" readonly>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="pic">PIC <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="text" id="pic" name="pic" required>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="unit">Unit :</label><br>
-                                    <input class="form-control" type="text" id="unit" name="unit" value="<?= $data1['unit']; ?>" readonly>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="katagori">KATAGORI <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="text" id="katagori" name="katagori" required>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="pic_gait">PIC GA & IT :</label><br>
-                                    <input class="form-control" type="text" id="pic_gait" name="pic_gait" required>
-                                </div>
+                                    <div class="form-group">
+                                        <label class="control-label">KONDISI <strong class="text-danger">*</strong></label>
+                                        <select class="form-control" name="kondisi" type="text" id="kondisi" required>
+                                            <option value="BAIK">BAIK</option>
+                                            <option value="BURUK">BURUK</option>
+                                        </select>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="tgl_req">TANGGAL REQUEST :</label><br>
-                                    <input class="form-control" type="date" id="tgl_req" name="tgl_req" required>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="tgl_data">TANGGAL PENDATAAN <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="date" id="tgl_data" name="tgl_data" value="<?= $date ?>" required>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="pic_req">PIC REQUEST :</label><br>
-                                    <input class="form-control" type="text" id="pic_req" name="pic_req" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="kendala">KENDALA :</label><br>
-                                    <input class="form-control" type="text" id="kendala" name="kendala" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="tgl_solved">TANGGAL SOLVED :</label><br>
-                                    <input class="form-control" type="date" id="tgl_solved" name="tgl_solved" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="status">STATUS :</label><br>
-                                    <input class="form-control" type="text" id="status" name="status" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="image">IMAGE :</label><br>
-                                    <input class="form-control" type="file" id="image" name="image" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="keterangan">KETERANGAN :</label><br>
-                                    <input class="form-control" type="text" id="keterangan" name="keterangan" required>
+                                    <div class="form-group">
+                                        <label for="status">STATUS <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="text" id="status" name="status" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-action">
-                        <button class="btn btn-success">Submit</button>
-                        <button class="btn btn-danger">Cancel</button>
-                    </div>
+                        <div class="card-action">
+                            <button class="btn btn-success" type="submit" name="add_asset">Submit</button>
+                            <!-- <button class="btn btn-danger">Cancel</button> -->
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
