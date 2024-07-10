@@ -30,7 +30,7 @@ $time = date("H:i");
                                         <div id="resultDisplay">Scan Disini</div>
                                         <div style="width:300px;" id="reader"></div><br>
                                         <label for="no_asset">NOMOR ASSET :</label><br>
-                                        <input class="form-control" type="text" id="no_asset" name="no_asset">
+                                        <input class="form-control" type="text" id="no_asset" name="no_asset" style="text-transform: uppercase;">
                                     </div>
 
                                     <div class="form-group">
@@ -40,12 +40,12 @@ $time = date("H:i");
 
                                     <div class="form-group">
                                         <label for="branch">BRANCH <strong class="text-danger">*</strong> </label><br>
-                                        <input class="form-control" type="text" id="branch" name="branch" required>
+                                        <input class="form-control" type="text" id="branch" name="branch" required style="text-transform: uppercase;">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="nama_barang">NAMA BARANG <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="nama_barang" name="nama_barang" required>
+                                        <input class="form-control" type="text" id="nama_barang" name="nama_barang" required style="text-transform: uppercase;">
                                     </div>
 
                                     <div class="form-group">
@@ -55,17 +55,17 @@ $time = date("H:i");
 
                                     <div class="form-group">
                                         <label for="unit">UNIT <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="unit" name="unit" required>
+                                        <input class="form-control" type="text" id="unit" name="unit" required style="text-transform: uppercase;">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="pic">PIC <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="pic" name="pic" required>
+                                        <input class="form-control" type="text" id="pic" name="pic" required style="text-transform: uppercase;">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="katagori">KATAGORI <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="katagori" name="katagori" required>
+                                        <input class="form-control" type="text" id="katagori" name="katagori" required style="text-transform: uppercase;">
                                     </div>
 
                                     <div class="form-group">
@@ -83,13 +83,13 @@ $time = date("H:i");
 
                                     <div class="form-group">
                                         <label for="status">STATUS <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="status" name="status" required>
+                                        <input class="form-control" type="text" id="status" name="status" required style="text-transform: uppercase;">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-action">
-                            <button class="btn btn-success" type="submit" name="add_asset">Submit</button>
+                            <button class="btn btn-success" type="submit" name="add_asset">CREATE</button>
                             <!-- <button class="btn btn-danger">Cancel</button> -->
                         </div>
                     </form>

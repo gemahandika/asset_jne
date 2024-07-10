@@ -27,21 +27,22 @@ include '../../header.php';
                                     <div class="form-group has-success">
                                         <div id="resultDisplay">Scan Disini</div>
                                         <div style="width:300px;" id="reader"></div><br>
-                                        <label for="no_asset">Nomor asset :</label><br>
-                                        <input class="form-control" type="text" id="no_asset" name="no_asset">
+                                        <label for="no_asset">CARI NO ASSET :</label><br>
+                                        <input class="form-control" type="text" id="no_asset" name="no_asset" style="text-transform: uppercase;">
                                     </div>
 
                                     <div class="form-group">
                                         <button type="submit" name="approve" class="btn btn-primary"><i class="fa fa-search"></i> Cari</button>
-                                        <a href="add_asset.php" type="submit" name="approve" class="btn btn-warning"><i class="fa fa-refresh"></i>Refresh</a>
+                                        <a href="add_maintenance.php" type="submit" name="approve" class="btn btn-warning"><i class="fa fa-refresh"></i>Refresh</a>
                                     </div>
                                 </form>
                                 <?php
                                 // data sebelum memilih data no asset
-                                $data1['nama_barang'] = "Data Belum dimasukan";
-                                $data1['katagori'] = "Data Belum dimasukan";
-                                $data1['branch'] = "Data Belum dimasukan";
-                                $data1['unit'] = "Data Belum dimasukan";
+                                $no_asset = "";
+                                $data1['nama_barang'] = "";
+                                $data1['katagori'] = "";
+                                $data1['branch'] = "";
+                                $data1['unit'] = "";
                                 // end
                                 if (isset($_GET['no_asset'])) {
                                     $no_asset = $_GET['no_asset'];
@@ -58,29 +59,32 @@ include '../../header.php';
                                 ?>
                                 <form action="../../../app/controller/Maintenance.php" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" id="no_asset" name="no_asset" value=" <?= $no_asset ?>">
-                                        <label for="nama_barang">Nama Barang :</label><br>
-                                        <input class="form-control" type="text" id="nama_barang" name="nama_barang" value="<?= $data1['nama_barang']; ?>">
+                                        <label for="nama_barang">NO ASSET :</label><br>
+                                        <input class="form-control" type="text" id="no_asset" name="no_asset" value=" <?= $no_asset ?>" style="text-transform: uppercase;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nama_barang">NAMA BARANG :</label><br>
+                                        <input class="form-control" type="text" id="nama_barang" name="nama_barang" value="<?= $data1['nama_barang']; ?>" style="text-transform: uppercase;">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="katagori">Katagori :</label><br>
-                                        <input class="form-control" type="text" id="katagori" name="katagori" value="<?= $data1['katagori']; ?>">
+                                        <label for="katagori">KATAGORI :</label><br>
+                                        <input class="form-control" type="text" id="katagori" name="katagori" value="<?= $data1['katagori']; ?>" style="text-transform: uppercase;">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="branch">Branch :</label><br>
-                                        <input class="form-control" type="text" id="branch" name="branch" value="<?= $data1['branch']; ?>">
+                                        <label for="branch">BRANCH :</label><br>
+                                        <input class="form-control" type="text" id="branch" name="branch" value="<?= $data1['branch']; ?>" style="text-transform: uppercase;">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="unit">Unit :</label><br>
-                                        <input class="form-control" type="text" id="unit" name="unit" value="<?= $data1['unit']; ?>">
+                                        <label for="unit">UNIT :</label><br>
+                                        <input class="form-control" type="text" id="unit" name="unit" value="<?= $data1['unit']; ?>" style="text-transform: uppercase;">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="pic_gait">PIC GA & IT :</label><br>
-                                        <input class="form-control" type="text" id="pic_gait" name="pic_gait" required>
+                                        <input class="form-control" type="text" id="pic_gait" name="pic_gait" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
@@ -90,12 +94,12 @@ include '../../header.php';
 
                                     <div class="form-group">
                                         <label for="pic_req">PIC REQUEST :</label><br>
-                                        <input class="form-control" type="text" id="pic_req" name="pic_req" required>
+                                        <input class="form-control" type="text" id="pic_req" name="pic_req" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="kendala">KENDALA :</label><br>
-                                        <input class="form-control" type="text" id="kendala" name="kendala" required>
+                                        <input class="form-control" type="text" id="kendala" name="kendala" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
@@ -105,7 +109,7 @@ include '../../header.php';
 
                                     <div class="form-group">
                                         <label for="status">STATUS :</label><br>
-                                        <input class="form-control" type="text" id="status" name="status" required>
+                                        <input class="form-control" type="text" id="status" name="status" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
@@ -115,10 +119,10 @@ include '../../header.php';
 
                                     <div class="form-group">
                                         <label for="keterangan">KETERANGAN :</label><br>
-                                        <input class="form-control" type="text" id="keterangan" name="keterangan" required>
+                                        <input class="form-control" type="text" id="keterangan" name="keterangan" style="text-transform: uppercase;" required>
                                     </div>
                                     <div class="card-action">
-                                        <button class="btn btn-success" type="submit" name="add_maintenance">Submit</button>
+                                        <button class="btn btn-success" type="submit" name="add_maintenance">CREATE</button>
                                     </div>
                                 </form>
                             </div>
