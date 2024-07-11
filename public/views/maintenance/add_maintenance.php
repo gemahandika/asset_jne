@@ -1,5 +1,7 @@
 <?php
 include '../../header.php';
+$date = date("Y-m-d");
+$time = date("H:i");
 ?>
 <style>
     .result {
@@ -59,62 +61,74 @@ include '../../header.php';
                                 ?>
                                 <form action="../../../app/controller/Maintenance.php" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <label for="nama_barang">NO ASSET :</label><br>
-                                        <input class="form-control" type="text" id="no_asset" name="no_asset" value=" <?= $no_asset ?>" style="text-transform: uppercase;">
+                                        <label for="nama_barang">NO ASSET <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="text" id="no_asset" name="no_asset" value=" <?= $no_asset ?>" style="text-transform: uppercase;" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="nama_barang">NAMA BARANG :</label><br>
-                                        <input class="form-control" type="text" id="nama_barang" name="nama_barang" value="<?= $data1['nama_barang']; ?>" style="text-transform: uppercase;">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="katagori">KATAGORI :</label><br>
-                                        <input class="form-control" type="text" id="katagori" name="katagori" value="<?= $data1['katagori']; ?>" style="text-transform: uppercase;">
+                                        <label for="nama_barang">NAMA BARANG <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="text" id="nama_barang" name="nama_barang" value="<?= $data1['nama_barang']; ?>" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="branch">BRANCH :</label><br>
-                                        <input class="form-control" type="text" id="branch" name="branch" value="<?= $data1['branch']; ?>" style="text-transform: uppercase;">
+                                        <label class="control-label">KATAGORI <strong class="text-danger">*</strong></label>
+                                        <select class="form-control" name="katagori" type="text" id="katagori" required>
+                                            <option value="<?= $data1['katagori']; ?>"><?= $data1['katagori']; ?></option>
+                                            <option value="FURNITURE">FURNITURE</option>
+                                            <option value="MACH & EQUIP">MACH & EQUIP</option>
+                                            <option value="LAND">LAND</option>
+                                            <option value="LSDVEHICLE">LSDVEHICLE</option>
+                                            <option value="NOPSBUILDING">NOPSBUILDING</option>
+                                            <option value="NOPSVEHICLE">NOPSVEHICLE</option>
+                                            <option value="OPSVEHICLE">OPSVEHICLE</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="unit">UNIT :</label><br>
-                                        <input class="form-control" type="text" id="unit" name="unit" value="<?= $data1['unit']; ?>" style="text-transform: uppercase;">
+                                        <label for="branch">BRANCH <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="text" id="branch" name="branch" value="<?= $data1['branch']; ?>" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="pic_gait">PIC GA & IT :</label><br>
+                                        <label for="unit">UNIT <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="text" id="unit" name="unit" value="<?= $data1['unit']; ?>" style="text-transform: uppercase;" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="pic_gait">PIC GA & IT <strong class="text-danger">*</strong></label><br>
                                         <input class="form-control" type="text" id="pic_gait" name="pic_gait" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="tgl_req">TANGGAL REQUEST :</label><br>
-                                        <input class="form-control" type="date" id="tgl_req" name="tgl_req" required>
+                                        <label for="tgl_req">TANGGAL REQUEST <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="date" id="tgl_req" name="tgl_req" value="<?= $date; ?>" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="pic_req">PIC REQUEST :</label><br>
+                                        <label for="pic_req">PIC REQUEST <strong class="text-danger">*</strong></label><br>
                                         <input class="form-control" type="text" id="pic_req" name="pic_req" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="kendala">KENDALA :</label><br>
+                                        <label for="kendala">KENDALA <strong class="text-danger">*</strong></label><br>
                                         <input class="form-control" type="text" id="kendala" name="kendala" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="tgl_solved">TANGGAL SOLVED :</label><br>
-                                        <input class="form-control" type="date" id="tgl_solved" name="tgl_solved" required>
+                                        <label for="tgl_solved">TANGGAL SOLVED <strong class="text-danger">*</strong></label><br>
+                                        <input class="form-control" type="date" id="tgl_solved" name="tgl_solved" value="<?= $date; ?>" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="status">STATUS :</label><br>
-                                        <input class="form-control" type="text" id="status" name="status" style="text-transform: uppercase;" required>
+                                        <label class="control-label">STATUS <strong class="text-danger">*</strong></label>
+                                        <select class="form-control" name="status" type="text" id="status" required>
+                                            <option value="IT">IT</option>
+                                            <option value="GA">GA</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="file">IMAGE :</label><br>
-                                        <input class="form-control" type="file" id="file" name="file" required>
+                                        <input class="form-control" type="file" id="file" name="file">
                                     </div>
 
                                     <div class="form-group">

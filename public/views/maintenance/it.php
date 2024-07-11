@@ -6,13 +6,16 @@ include '../../header.php';
 <div class="container">
     <div class="page-inner">
         <div class="row">
+            <h5 class="btn ">
+                <strong>- DATA MAINTENANCE IT -</strong>
+            </h5>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="example" class="display" style="width:100%">
                                 <thead>
-                                    <tr class="btn-warning text-white">
+                                    <tr class="btn-success text-white">
                                         <th class="btn-sm">NO</th>
                                         <th class="btn-sm">PIC GA IT</th>
                                         <th class="btn-sm">NO ASSET</th>
@@ -24,7 +27,6 @@ include '../../header.php';
                                         <th class="btn-sm">PIC REQUEST</th>
                                         <th class="btn-sm">KENDALA</th>
                                         <th class="btn-sm">TANGGAL SOLVED</th>
-                                        <th class="btn-sm">STATUS</th>
                                         <th class="btn-sm">IMAGE</th>
                                         <th class="btn-sm">KETERANGAN</th>
                                     </tr>
@@ -32,7 +34,7 @@ include '../../header.php';
 
                                 <?php
                                 $no = 0;
-                                $sql = mysqli_query($koneksi, "SELECT * FROM maintenance ORDER BY id_maintenance DESC") or die(mysqli_error($koneksi));
+                                $sql = mysqli_query($koneksi, "SELECT * FROM maintenance WHERE status = 'IT' ORDER BY id_maintenance DESC") or die(mysqli_error($koneksi));
                                 $result = array();
                                 while ($data = mysqli_fetch_array($sql)) {
                                     $result[] = $data;
@@ -59,7 +61,6 @@ include '../../header.php';
                                         <td class="btn-sm text-center"><?= $data['pic_req'] ?></td>
                                         <td class="btn-sm text-center"><?= $data['kendala'] ?></td>
                                         <td class="btn-sm text-center"><?= $data['tgl_solved'] ?></td>
-                                        <td class="btn-sm text-center"><?= $data['status'] ?></td>
                                         <td><a href="#" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_maintenance'] ?>">Photo</a></td>
                                         <td class="btn-sm text-center"><?= $data['keterangan'] ?></td>
                                     </tr>

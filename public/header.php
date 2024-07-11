@@ -40,10 +40,12 @@ include '../../../app/config/koneksi.php';
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="../../../app/assets/css/demo.css" />
+
     <!-- datatables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -105,8 +107,13 @@ include '../../../app/config/koneksi.php';
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="../maintenance/index.php">
-                                            <span class="sub-item">Data Maintenance</span>
+                                        <a href="../maintenance/it.php">
+                                            <span class="sub-item">Maintenance IT</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="../maintenance/ga.php">
+                                            <span class="sub-item">Maintenance GA</span>
                                         </a>
                                     </li>
                                 </ul>

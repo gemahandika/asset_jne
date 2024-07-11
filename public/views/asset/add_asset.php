@@ -64,8 +64,16 @@ $time = date("H:i");
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="katagori">KATAGORI <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="katagori" name="katagori" required style="text-transform: uppercase;">
+                                        <label class="control-label">KATAGORI <strong class="text-danger">*</strong></label>
+                                        <select class="form-control" name="katagori" type="text" id="katagori" required>
+                                            <option value="FURNITURE">FURNITURE</option>
+                                            <option value="MACH & EQUIP">MACH & EQUIP</option>
+                                            <option value="LAND">LAND</option>
+                                            <option value="LSDVEHICLE">LSDVEHICLE</option>
+                                            <option value="NOPSBUILDING">NOPSBUILDING</option>
+                                            <option value="NOPSVEHICLE">NOPSVEHICLE</option>
+                                            <option value="OPSVEHICLE">OPSVEHICLE</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
