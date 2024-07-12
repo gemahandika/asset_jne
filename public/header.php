@@ -140,6 +140,28 @@ include '../../../app/config/koneksi.php';
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#assessment">
+                                <i class="fas fa-book"></i>
+                                <p>Assessment</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="assessment">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="../assessment/add_assessment.php">
+                                            <span class="sub-item">Create Assessment</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="../assessment/index.php">
+                                            <span class="sub-item">Data Assessment</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
