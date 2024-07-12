@@ -91,7 +91,7 @@ $time = date("H:i");
 <script type="text/javascript">
     function onScanSuccess(qrCodeMessage) {
         document.getElementById('resultDisplay').innerHTML = '<span class="result">' + qrCodeMessage + '</span>';
-        document.getElementById('no_asset').value = qrCodeMessage;
+        document.getElementById('no_resi').value = qrCodeMessage;
     }
 
     function onScanError(errorMessage) {
