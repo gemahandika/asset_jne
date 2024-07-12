@@ -74,7 +74,7 @@ $time = date("H:i");
                                         <select class="form-control" name="katagori" type="text" id="katagori" required>
                                             <option value="<?= $data1['katagori']; ?>"><?= $data1['katagori']; ?></option>
                                             <option value="FURNITURE">FURNITURE</option>
-                                            <option value="MACH & EQUIP">MACH & EQUIP</option>
+                                            <option value="MACH&EQUIP">MACH & EQUIP</option>
                                             <option value="LAND">LAND</option>
                                             <option value="LSDVEHICLE">LSDVEHICLE</option>
                                             <option value="NOPSBUILDING">NOPSBUILDING</option>

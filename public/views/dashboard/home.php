@@ -257,6 +257,7 @@ echo "<script>
         const labels = dataAsset.map(item => item.label);
         const data = dataAsset.map(item => item.value);
         const backgroundColors = dataAsset.map(item => item.color);
+        const highlightColors = dataAsset.map(item => item.highlight);
 
         new Chart(ctx, {
             type: 'pie',
@@ -266,6 +267,7 @@ echo "<script>
                     label: '# of Assets',
                     data: data,
                     backgroundColor: backgroundColors,
+                    hoverBackgroundColor: highlightColors,
                     borderWidth: 1
                 }]
             },

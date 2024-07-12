@@ -102,7 +102,7 @@ if ($dari != '' && $ke != '') {
 // Query untuk mengambil data dari database
 $sql = "SELECT 'FURNITURE' AS katagori, COUNT(*) AS total FROM asset WHERE katagori = 'FURNITURE' $where_clause
         UNION 
-        SELECT 'MACH & EQUIP' AS katagori, COUNT(*) AS total FROM asset WHERE katagori = 'MACH & EQUIP' $where_clause
+        SELECT 'MACH & EQUIP' AS katagori, COUNT(*) AS total FROM asset WHERE katagori = 'MACH&EQUIP' $where_clause
         UNION 
         SELECT 'LAND' AS katagori, COUNT(*) AS total FROM asset WHERE katagori = 'LAND' $where_clause
         UNION 
@@ -129,27 +129,35 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     // Tentukan warna berdasarkan kategori
     $color = '';
+    $highlight = '';
     if ($katagori == 'FURNITURE') {
-        $color = '#FDB45C';
+        $color = '#4CAF50';
+        $highlight = '#81C784';
     } elseif ($katagori == 'MACH & EQUIP') {
-        $color = '#46BFBD';
+        $color = '#FF9800';
+        $highlight = '#FFB74D';
     } elseif ($katagori == 'LAND') {
-        $color = '#F7464A';
+        $color = '#F44336';
+        $highlight = '#EF5350';
     } elseif ($katagori == 'LSDVEHICLE') {
-        $color = '#949FB1';
+        $color = '#9C27B0';
+        $highlight = '#BA68C8';
     } elseif ($katagori == 'NOPSBUILDING') {
-        $color = '#4D5360';
+        $color = '#3F51B5';
+        $highlight = '#7986CB';
     } elseif ($katagori == 'NOPSVEHICLE') {
-        $color = '#E2EAE9';
+        $color = '#00BCD4';
+        $highlight = '#4DD0E1';
     } elseif ($katagori == 'OPSVEHICLE') {
-        $color = '#D4CCC5';
+        $color = '#FFC107';
+        $highlight = '#FFD54F';
     }
 
     // Tambahkan data ke array $pdata
     $pdata[] = [
         'value' => $total,
         'color' => $color,
-        'highlight' => '#5AD3D9', // Highlight color tetap sama untuk semua
+        'highlight' => $highlight,
         'label' => ucfirst(strtolower($katagori)) // Menggunakan ucfirst() untuk membuat huruf pertama dari status menjadi kapital
     ];
 }
@@ -159,7 +167,7 @@ $json_data = json_encode($pdata);
 
 $furniture = mysqli_query($koneksi, "SELECT * FROM asset WHERE katagori = 'furniture' $where_clause") or die(mysqli_error($koneksi));
 $jumlah_furniture = mysqli_num_rows($furniture);
-$mach = mysqli_query($koneksi, "SELECT * FROM asset WHERE katagori = 'mach & equip' $where_clause") or die(mysqli_error($koneksi));
+$mach = mysqli_query($koneksi, "SELECT * FROM asset WHERE katagori = 'mach&equip' $where_clause") or die(mysqli_error($koneksi));
 $jumlah_mach = mysqli_num_rows($mach);
 $land = mysqli_query($koneksi, "SELECT * FROM asset WHERE katagori = 'land' $where_clause") or die(mysqli_error($koneksi));
 $jumlah_land = mysqli_num_rows($land);
