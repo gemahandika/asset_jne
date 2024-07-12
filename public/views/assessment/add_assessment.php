@@ -59,6 +59,17 @@ $time = date("H:i");
                                     </div>
 
                                     <div class="form-group">
+                                        <label class="control-label">MARKET PLACE <strong class="text-danger">*</strong></label>
+                                        <select class="form-control" name="market" type="text" id="market" required>
+                                            <option value="SHOPEE">SHOPEE</option>
+                                            <option value="LAZADA">LAZADA</option>
+                                            <option value="TOKOPEDIA">TOKOPEDIA</option>
+                                            <option value="BLIBLI">BLIBLI</option>
+                                            <option value="LAINYA">LAINYA</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="tgl_sortir">TANGGAL SORTIR :</label><br>
                                         <input class="form-control" type="date" id="tgl_sortir" name="tgl_sortir" value="<?= $date ?>" required>
                                     </div>

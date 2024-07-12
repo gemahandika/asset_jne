@@ -20,6 +20,7 @@ include '../../header.php';
                                         <th class="btn-sm">RESI</th>
                                         <th class="btn-sm">KATAGORI</th>
                                         <th class="btn-sm">STATUS</th>
+                                        <th class="btn-sm">MARKET</th>
                                         <th class="btn-sm">TGL SORTIR</th>
                                         <th class="btn-sm">LOKASI</th>
                                         <th class="btn-sm">KETERANGAN</th>
@@ -42,6 +43,7 @@ include '../../header.php';
                                         <td class="btn-sm text-center"><?= $data['resi'] ?></td>
                                         <td class="btn-sm text-center"><?= $data['katagori'] ?></td>
                                         <td class="btn-sm text-center"><?= $data['status'] ?></td>
+                                        <td class="btn-sm text-center"><?= $data['market'] ?></td>
                                         <td class="btn-sm text-center"><?= $data['tgl_sortir'] ?></td>
                                         <td class="btn-sm text-center"><?= $data['lokasi'] ?></td>
                                         <td class="btn-sm text-center"><?= $data['keterangan'] ?></td>
@@ -83,6 +85,18 @@ include '../../header.php';
                                                                 <option value="PENYOK">PENYOK</option>
                                                                 <option value="RUSAK">RUSAK</option>
                                                                 <option value="ISI KOSONG">ISI KOSONG</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="control-label">MARKET PLACE <strong class="text-danger">*</strong></label>
+                                                            <select class="form-control" name="market" type="text" id="market" required>
+                                                                <option value="<?= $data['market'] ?>"><?= $data['market'] ?></option>
+                                                                <option value="SHOPEE">SHOPEE</option>
+                                                                <option value="LAZADA">LAZADA</option>
+                                                                <option value="TOKOPEDIA">TOKOPEDIA</option>
+                                                                <option value="BLIBLI">BLIBLI</option>
+                                                                <option value="LAINYA">LAINYA</option>
                                                             </select>
                                                         </div>
 
