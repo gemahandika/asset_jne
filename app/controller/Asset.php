@@ -25,54 +25,14 @@ if (isset($_POST['add_asset'])) {
     VALUES( '$no_asset', '$branch', '$nama_barang', '$tgl_pembelian', '$unit', '$pic' ,'$katagori' , '$kondisi' , '$tgl_data' , '$status')");
         showSweetAlert('success', 'Sukses', $pesan_ok, '#3085d6', $tujuan);
     }
+} else if (isset($_POST['destroy'])) {
+    $id_asset = trim(mysqli_real_escape_string($koneksi, $_POST['id_asset']));
+    $delete = trim(mysqli_real_escape_string($koneksi, $_POST['delete']));
+
+    // Update status tb daftar
+    mysqli_query($koneksi, "UPDATE asset SET destroy ='$delete' WHERE id_asset='$id_asset'");
+    showSweetAlert('success', 'Success', $pesan_destroy, '#3085d6', $destroy);
 }
-// } else if (isset($_POST['add_daftar'])) {
-//     $pemasukan = trim(mysqli_real_escape_string($koneksi, $_POST['pemasukan']));
-//     $nip = trim(mysqli_real_escape_string($koneksi, $_POST['nip']));
-//     $join_date = trim(mysqli_real_escape_string($koneksi, $_POST['join_date']));
-//     $nama_anggota = trim(mysqli_real_escape_string($koneksi, $_POST['nama_anggota']));
-//     $divisi = trim(mysqli_real_escape_string($koneksi, $_POST['unit']));
-//     $cabang = trim(mysqli_real_escape_string($koneksi, $_POST['cabang']));
-//     $keterangan = trim(mysqli_real_escape_string($koneksi, $_POST['keterangan']));
-//     $saldo = trim(mysqli_real_escape_string($koneksi, $_POST['saldo']));
-//     $status_karyawan = trim(mysqli_real_escape_string($koneksi, $_POST['status_karyawan']));
-//     $phone = trim(mysqli_real_escape_string($koneksi, $_POST['hp']));
-//     $alamat = trim(mysqli_real_escape_string($koneksi, $_POST['alamat']));
-//     $status = trim(mysqli_real_escape_string($koneksi, $_POST['status']));
-//     $pass = trim(mysqli_real_escape_string($koneksi, $_POST['password']));
-//     $status_user = trim(mysqli_real_escape_string($koneksi, $_POST['status_user']));
-//     $id_daftar = trim(mysqli_real_escape_string($koneksi, $_POST['id_daftar']));
-//     $generate = trim(mysqli_real_escape_string($koneksi, $_POST['generate']));
-//     $jumlah_tagihan = trim(mysqli_real_escape_string($koneksi, $_POST['jumlah_tagihan']));
-
-//     // Validasi NIK agar tidak ganda
-//     $check_query = "SELECT * FROM tb_anggota WHERE nip = '$nip'";
-//     $check_result = $koneksi->query($check_query);
-//     if ($check_result->num_rows > 0) {
-//         showSweetAlert('warning', 'Oops...', $pesan, '#3085d6', $tujuan_2);
-//     } else {
-//         // Masukan data ke tabel anggota
-//         mysqli_query($koneksi, "INSERT INTO tb_anggota ( nip, join_date, nama_anggota, divisi, cabang, status_karyawan, phone, alamat, saldo, status) 
-//     VALUES( '$nip', '$join_date', '$nama_anggota', '$divisi', '$cabang','$status_karyawan','$phone','$alamat',$saldo,'$status')");
-//         // Masukan data ke table transaksi
-//         mysqli_query($koneksi, "INSERT INTO tb_transaksi (nip, nama_anggota, jenis_transaksi, jumlah_transaksi, keterangan, tgl_transaksi) 
-//     VALUES('$nip', '$nama_anggota', '$pemasukan', $saldo, '$keterangan', '$join_date')");
-//         // Update status tb daftar
-//         mysqli_query($koneksi, "UPDATE tb_daftar SET generate='$generate' WHERE id_daftar='$id_daftar'");
-//         //  Masukan data ke table User Aplikasi
-//         mysqli_query($koneksi, "INSERT INTO user (nip, nama_user, username, password, status) 
-//     VALUES('$nip', '$nama_anggota', '$nip', '$pass', '$status_user')");
-
-//         // Masukan data ke table Tagihan
-//         mysqli_query($koneksi, "INSERT INTO tb_tagihan ( nama_anggota, nik, jumlah_tagihan, tanggal, keterangan) 
-//     VALUES( '$nama_anggota', '$nip', '$jumlah_tagihan', '$join_date', '$keterangan')");
-
-//         // Masukan data ke table History
-//         mysqli_query($koneksi, "INSERT INTO tb_history (nama, nik, tanggal, nominal, keterangan) 
-//             VALUES('$nama_anggota', '$nip', '$join_date', $saldo, '$keterangan')");
-
-//         showSweetAlert('success', 'Success', $pesan_ok, '#3085d6', $tujuan_2);
-//     }
 // } else if (isset($_POST['edit'])) {
 //     $id = $_POST['id'];
 //     $nip = trim(mysqli_real_escape_string($koneksi, $_POST['nip']));

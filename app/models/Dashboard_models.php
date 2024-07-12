@@ -22,8 +22,18 @@ if (isset($_GET['dari']) && isset($_GET['ke'])) {
     $sql3 = mysqli_query($koneksi, "SELECT * FROM maintenance WHERE status = 'IT' AND tgl_req BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "'") or die(mysqli_error($koneksi));
     $maintenance_it = mysqli_num_rows($sql3);
 } else {
-    $sql2 = mysqli_query($koneksi, "SELECT * FROM maintenance WHERE status = 'IT' ") or die(mysqli_error($koneksi));
-    $maintenance_it = mysqli_num_rows($sql2);
+    $sql3 = mysqli_query($koneksi, "SELECT * FROM maintenance WHERE status = 'IT' ") or die(mysqli_error($koneksi));
+    $maintenance_it = mysqli_num_rows($sql3);
+}
+// end
+
+// destroy
+if (isset($_GET['dari']) && isset($_GET['ke'])) {
+    $destroy = mysqli_query($koneksi, "SELECT * FROM asset WHERE destroy = 'YA' AND tgl_pendataan BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "'") or die(mysqli_error($koneksi));
+    $asset_destroy = mysqli_num_rows($destroy);
+} else {
+    $destroy = mysqli_query($koneksi, "SELECT * FROM asset WHERE destroy = 'YA' ") or die(mysqli_error($koneksi));
+    $asset_destroy = mysqli_num_rows($destroy);
 }
 // end
 

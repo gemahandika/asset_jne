@@ -41,13 +41,13 @@ $ke = isset($_GET['ke']) ? $_GET['ke'] : '';
                             <div class="form-group col-md-3">
                                 <div class="input-icon">
                                     <label for="">Date From :</label>
-                                    <input type="date" class="form-control" name="dari" value="<?= htmlspecialchars($dari) ?>" />
+                                    <input type="date" class="form-control" name="dari" value="<?= htmlspecialchars($dari) ?>" required />
                                 </div>
                             </div>
                             <div class="form-group col-md-3">
                                 <div class="input-icon">
                                     <label for="">Date Thru :</label>
-                                    <input type="date" class="form-control" name="ke" value="<?= htmlspecialchars($ke) ?>" />
+                                    <input type="date" class="form-control" name="ke" value="<?= htmlspecialchars($ke) ?>" required />
                                 </div>
                             </div>
                             <div class="form-group col-md-3 mt-4">
@@ -145,7 +145,7 @@ $ke = isset($_GET['ke']) ? $_GET['ke'] : '';
                             <div class="col col-stats ms-3 ms-sm-0">
                                 <div class="numbers">
                                     <p class="card-category">Asset Destroy</p>
-                                    <h4 class="card-title">576</h4>
+                                    <h4 class="card-title"><?= $asset_destroy; ?></h4>
                                 </div>
                             </div>
                         </div>

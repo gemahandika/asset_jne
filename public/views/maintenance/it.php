@@ -17,7 +17,7 @@ include '../../header.php';
                                 <thead>
                                     <tr class="btn-success text-white">
                                         <th class="btn-sm">NO</th>
-                                        <th class="btn-sm">PIC GA IT</th>
+                                        <th class="btn-sm">PIC IT</th>
                                         <th class="btn-sm">NO ASSET</th>
                                         <th class="btn-sm">TANGGAL REQUEST</th>
                                         <th class="btn-sm">NAMA BARANG</th>

@@ -7,7 +7,7 @@ include '../../header.php';
     <div class="page-inner">
         <div class="row">
             <h5 class="btn">
-                <strong>- DATA MAINTENANCE GA -</strong>
+                <strong>- DATA ASSESSMENT GA -</strong>
             </h5>
             <div class="col-md-12">
                 <div class="card">
@@ -17,17 +17,11 @@ include '../../header.php';
                                 <thead>
                                     <tr class="btn-warning text-white">
                                         <th class="btn-sm">NO</th>
-                                        <th class="btn-sm">PIC GA</th>
-                                        <th class="btn-sm">NO ASSET</th>
-                                        <th class="btn-sm">TANGGAL REQUEST</th>
-                                        <th class="btn-sm">NAMA BARANG</th>
+                                        <th class="btn-sm">RESI</th>
                                         <th class="btn-sm">KATAGORI</th>
-                                        <th class="btn-sm">BRANCH</th>
-                                        <th class="btn-sm">UNIT</th>
-                                        <th class="btn-sm">PIC REQUEST</th>
-                                        <th class="btn-sm">KENDALA</th>
-                                        <th class="btn-sm">TANGGAL SOLVED</th>
-                                        <th class="btn-sm">IMAGE</th>
+                                        <th class="btn-sm">STATUS</th>
+                                        <th class="btn-sm">TGL SORTIR</th>
+                                        <th class="btn-sm">LOKASI</th>
                                         <th class="btn-sm">KETERANGAN</th>
                                     </tr>
                                 </thead>

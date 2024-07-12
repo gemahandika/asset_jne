@@ -88,11 +88,32 @@ include '../../../app/config/koneksi.php';
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../asset/index.php" class="collapsed" aria-expanded="false">
+                            <a data-bs-toggle="collapse" href="#asset">
                                 <i class="fas fa-layer-group"></i>
-                                <p>Assets</p>
+                                <p>Asset</p>
+                                <span class="caret"></span>
                             </a>
+                            <div class="collapse" id="asset">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="../asset/add_asset.php">
+                                            <span class="sub-item">Create Asset</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="../asset/index.php">
+                                            <span class="sub-item">Data Asset</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="../asset/destroy.php">
+                                            <span class="sub-item">Data Destroy</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
+
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#base">
                                 <i class="fas fa-cogs"></i>
