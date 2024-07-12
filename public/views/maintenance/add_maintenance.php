@@ -84,13 +84,43 @@ $time = date("H:i");
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="branch">BRANCH <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="branch" name="branch" value="<?= $data1['branch']; ?>" style="text-transform: uppercase;" required>
+                                        <label class="control-label">BRANCH <strong class="text-danger">*</strong></label>
+                                        <select class="form-control" name="branch" type="text" id="branch" required>
+                                            <option value="<?= $data1['branch']; ?>"><?= $data1['branch']; ?></option>
+                                            <option value="KCU MEDAN">KCU MEDAN</option>
+                                            <option value="CABANG">CABANG</option>
+                                            <option value="AGEN">AGEN</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="unit">UNIT <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="unit" name="unit" value="<?= $data1['unit']; ?>" style="text-transform: uppercase;" required>
+                                        <label class="control-label">UNIT <strong class="text-danger">*</strong></label>
+                                        <select class="form-control" name="unit" type="text" id="unit" required>
+                                            <option value="<?= $data1['unit']; ?>"><?= $data1['unit']; ?></option>
+                                            <option value="OUTBOUND">OUTBOUND</option>
+                                            <option value="INBOUND">INBOUND</option>
+                                            <option value="GA">GA</option>
+                                            <option value="HC">HC</option>
+                                            <option value="CS">CS</option>
+                                            <option value="SALES">SALES</option>
+                                            <option value="HEAVY CARGO">HEAVY CARGO</option>
+                                            <option value="JTR">JTR</option>
+                                            <option value="CCC">CCC</option>
+                                            <option value="IT">IT</option>
+                                            <option value="FULLFILMENT">FULLFILMENT</option>
+                                            <option value="CR3">CR3</option>
+                                            <option value="PICKUP">PICKUP</option>
+                                            <option value="KP ATC">KP ATC</option>
+                                            <option value="KP MEDAN BARAT">KP MEDAN BARAT</option>
+                                            <option value="KP MEDAN TIMUR">KP MEDAN TIMUR</option>
+                                            <option value="KP PELANGI">KP PELANGI</option>
+                                            <option value="KP JUANDA">KP JUANDA</option>
+                                            <option value="KP WAHID HASYM">KP WAHID HASYM</option>
+                                            <option value="KP TOMANG">KP TOMANG</option>
+                                            <option value="KP MARELAN">KP MARELAN</option>
+                                            <option value="KP THAMRIN">KP THAMRIN</option>
+                                            <option value="LAINNYA">LAINNYA</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
