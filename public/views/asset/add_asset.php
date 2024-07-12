@@ -118,8 +118,11 @@ $time = date("H:i");
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="status">STATUS <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="status" name="status" required style="text-transform: uppercase;">
+                                        <label class="control-label">STATUS <strong class="text-danger">*</strong></label>
+                                        <select class="form-control" name="status" type="text" id="status" required>
+                                            <option value="GA">GA</option>
+                                            <option value="IT">IT</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
