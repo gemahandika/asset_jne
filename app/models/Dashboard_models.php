@@ -39,7 +39,7 @@ if (isset($_GET['dari']) && isset($_GET['ke'])) {
 
 // assessment
 if (isset($_GET['dari']) && isset($_GET['ke'])) {
-    $assessment = mysqli_query($koneksi, "SELECT * FROM assessment tgl_pendataan BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "'") or die(mysqli_error($koneksi));
+    $assessment = mysqli_query($koneksi, "SELECT * FROM assessment WHERE tgl_sortir BETWEEN '" . $_GET['dari'] . "' and '" . $_GET['ke'] . "'") or die(mysqli_error($koneksi));
     $asset_assessment = mysqli_num_rows($assessment);
 } else {
     $assessment = mysqli_query($koneksi, "SELECT * FROM assessment  ") or die(mysqli_error($koneksi));
