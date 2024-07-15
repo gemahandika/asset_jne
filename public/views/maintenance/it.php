@@ -13,7 +13,7 @@ include '../../header.php';
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="display" style="width:100%">
+                            <table class="display" style="width:100%" id="mauexport">
                                 <thead>
                                     <tr class="btn-success text-white">
                                         <th class="btn-sm">NO</th>
@@ -29,6 +29,7 @@ include '../../header.php';
                                         <th class="btn-sm">TANGGAL SOLVED</th>
                                         <th class="btn-sm">IMAGE</th>
                                         <th class="btn-sm">KETERANGAN</th>
+                                        <th class="btn-sm">ACTION</th>
                                     </tr>
                                 </thead>
 
@@ -63,6 +64,9 @@ include '../../header.php';
                                         <td class="btn-sm text-center"><?= $data['tgl_solved'] ?></td>
                                         <td><a href="#" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_maintenance'] ?>">Photo</a></td>
                                         <td class="btn-sm text-center"><?= $data['keterangan'] ?></td>
+                                        <td class="btn-sm text-center">
+                                            <a href="edit_asset.php?id=<?= $data['id_maintenance'] ?>" class="btn btn-danger btn-sm">EDIT</a>
+                                        </td>
                                     </tr>
                                     <!-- Modal Edit -->
                                     <div class="modal fade" id="editModal<?= $data['id_maintenance'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

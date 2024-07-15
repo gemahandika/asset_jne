@@ -13,7 +13,7 @@ include '../../header.php';
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example" class="display" style="width:100%">
+                            <table class="display" style="width:100%" id="mauexport">
                                 <thead>
                                     <tr class="btn-primary text-white">
                                         <th class="btn-sm">NO</th>
