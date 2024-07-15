@@ -13,6 +13,7 @@ if (isset($_POST['add_asset'])) {
     $kondisi = trim(mysqli_real_escape_string($koneksi, $_POST['kondisi']));
     $tgl_data = trim(mysqli_real_escape_string($koneksi, $_POST['tgl_data']));
     $status = (mysqli_real_escape_string($koneksi, $_POST['status']));
+    $destroy = (mysqli_real_escape_string($koneksi, $_POST['destroy']));
 
     // Validasi NIK agar tidak ganda
     $check_query = "SELECT * FROM asset WHERE no_asset = '$no_asset'";
@@ -21,8 +22,8 @@ if (isset($_POST['add_asset'])) {
         showSweetAlert('warning', 'Oops...', $pesan, '#3085d6', $tujuan);
     } else {
         // Masukan data ke tabel anggota
-        mysqli_query($koneksi, "INSERT INTO asset ( no_asset, branch, nama_barang, tgl_pembelian, unit, pic, katagori, kondisi, tgl_pendataan, status ) 
-    VALUES( '$no_asset', '$branch', '$nama_barang', '$tgl_pembelian', '$unit', '$pic' ,'$katagori' , '$kondisi' , '$tgl_data' , '$status')");
+        mysqli_query($koneksi, "INSERT INTO asset ( no_asset, branch, nama_barang, tgl_pembelian, unit, pic, katagori, kondisi, tgl_pendataan, status, destroy ) 
+    VALUES( '$no_asset', '$branch', '$nama_barang', '$tgl_pembelian', '$unit', '$pic' ,'$katagori' , '$kondisi' , '$tgl_data' , '$status' , '$destroy')");
         showSweetAlert('success', 'Sukses', $pesan_ok, '#3085d6', $tujuan);
     }
 } else if (isset($_POST['destroy'])) {
