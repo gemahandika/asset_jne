@@ -124,6 +124,7 @@ $time = date("H:i");
                                             <option value="IT">IT</option>
                                         </select>
                                     </div>
+                                    <input type="text" name="destroy" value="NO" required readonly>
                                 </div>
                             </div>
                         </div>
