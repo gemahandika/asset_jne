@@ -143,19 +143,19 @@ include '../../../app/config/koneksi.php';
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#assessment">
                                 <i class="fas fa-book"></i>
-                                <p>Assessment</p>
+                                <p>ASM</p>
                                 <span class="caret"></span>
                             </a>
                             <div class="collapse" id="assessment">
                                 <ul class="nav nav-collapse">
                                     <li>
                                         <a href="../assessment/add_assessment.php">
-                                            <span class="sub-item">Create Assessment</span>
+                                            <span class="sub-item">Create ASM</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="../assessment/index.php">
-                                            <span class="sub-item">Data Assessment</span>
+                                            <span class="sub-item">Data ASM</span>
                                         </a>
                                     </li>
 

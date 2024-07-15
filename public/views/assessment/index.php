@@ -7,7 +7,7 @@ include '../../header.php';
     <div class="page-inner">
         <div class="row">
             <h5 class="btn">
-                <strong>- DATA ASSESSMENT -</strong>
+                <strong>- DATA ASM -</strong>
             </h5>
             <div class="col-md-12">
                 <div class="card">

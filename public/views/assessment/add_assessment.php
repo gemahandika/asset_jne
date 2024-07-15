@@ -20,7 +20,7 @@ $time = date("H:i");
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Tambah Data Assessment</div>
+                        <div class="card-title">Tambah Data ASM</div>
                     </div>
                     <form action="../../../app/controller/Assessment.php" method="post">
                         <div class="card-body">

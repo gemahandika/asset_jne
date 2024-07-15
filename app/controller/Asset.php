@@ -33,22 +33,26 @@ if (isset($_POST['add_asset'])) {
     // Update status tb daftar
     mysqli_query($koneksi, "UPDATE asset SET destroy ='$delete' WHERE id_asset='$id_asset'");
     showSweetAlert('success', 'Success', $pesan_destroy, '#3085d6', $destroy);
+} else if (isset($_POST['edit'])) {
+    $id = $_POST['id'];
+    $branch = trim(mysqli_real_escape_string($koneksi, $_POST['branch']));
+    $nama_barang = trim(mysqli_real_escape_string($koneksi, $_POST['nama_barang']));
+    $tgl_pembelian = trim(mysqli_real_escape_string($koneksi, $_POST['tgl_pembelian']));
+    $unit = trim(mysqli_real_escape_string($koneksi, $_POST['unit']));
+    $pic = trim(mysqli_real_escape_string($koneksi, $_POST['pic']));
+    $katagori = trim(mysqli_real_escape_string($koneksi, $_POST['katagori']));
+    $kondisi = trim(mysqli_real_escape_string($koneksi, $_POST['kondisi']));
+    $tgl_data = trim(mysqli_real_escape_string($koneksi, $_POST['tgl_data']));
+    $status = (mysqli_real_escape_string($koneksi, $_POST['status']));
+    // $destroy = (mysqli_real_escape_string($koneksi, $_POST['destroy']));
+
+    mysqli_query($koneksi, "UPDATE asset SET branch='$branch', nama_barang='$nama_barang', tgl_pembelian='$tgl_pembelian', unit='$unit', pic='$pic',
+    katagori='$katagori', kondisi='$kondisi', tgl_pendataan='$tgl_data', status='$status'WHERE id_asset='$id'");
+
+    showSweetAlert('success', 'Success', $pesan_update, '#3085d6', $tujuan);
 }
-// } else if (isset($_POST['edit'])) {
-//     $id = $_POST['id'];
-//     $nip = trim(mysqli_real_escape_string($koneksi, $_POST['nip']));
-//     $join_date = trim(mysqli_real_escape_string($koneksi, $_POST['join_date']));
-//     $nama_anggota = trim(mysqli_real_escape_string($koneksi, $_POST['nama_anggota']));
-//     $divisi = trim(mysqli_real_escape_string($koneksi, $_POST['divisi']));
-//     $cabang = trim(mysqli_real_escape_string($koneksi, $_POST['cabang']));
-//     $saldo = trim(mysqli_real_escape_string($koneksi, $_POST['saldo']));
-//     $status = trim(mysqli_real_escape_string($koneksi, $_POST['status']));
-//     mysqli_query($koneksi, "UPDATE tb_anggota SET nip='$nip', join_date='$join_date', nama_anggota='$nama_anggota', divisi='$divisi', cabang='$cabang', saldo='$saldo',
-//     status='$status' WHERE id_anggota='$id'");
-//     mysqli_query($koneksi, "UPDATE user SET nama_user='$nama_anggota' WHERE nip='$nip'");
-//     mysqli_query($koneksi, "UPDATE user SET nip='$nip' WHERE nama_user='$nama_anggota'");
-//     showSweetAlert('success', 'Success', $pesan_update, '#3085d6', $tujuan);
-// } else if (isset($_POST['ambil'])) {
+
+//  else if (isset($_POST['ambil'])) {
 //     $id = $_POST['id'];
 //     $saldo_update = trim(mysqli_real_escape_string($koneksi, $_POST['saldo_update']));
 
@@ -63,4 +67,3 @@ if (isset($_POST['add_asset'])) {
 //     mysqli_query($koneksi, "INSERT INTO tb_bukubesar(jenis_bukubesar, tgl_bukubesar, keterangan, debit_bukubesar, kredit_bukubesar) 
 //     VALUES('$jenis_bukubesar', '$tgl_bukubesar', '$keterangan', '$debit_bukubesar', '$kredit_bukubesar')");
 //     showSweetAlert('success', 'Success', $pesan_ambil, '#3085d6', $tujuan_3);
-// }

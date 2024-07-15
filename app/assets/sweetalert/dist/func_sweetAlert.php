@@ -9,7 +9,7 @@ $pesan_ok = "Data Berhasil di Tambah.";
 $pesan_update = "Data Berhasil di Update.";
 $pesan_destroy = "Data Berhasil di Destroy.";
 $tujuan = "../../public/views/asset/index.php";
-$tujuan2 = "../../public/views/maintenance/index.php";
+$tujuan_maintenance = "../../public/views/maintenance/add_maintenance.php";
 $destroy = "../../public/views/asset/destroy.php";
 $tujuan_3 = "../../public/views/data_anggota/index_nonaktif.php";
 function showSweetAlert($icon, $title, $text, $confirmButtonColor, $tujuan)
