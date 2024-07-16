@@ -55,9 +55,9 @@ if (!isset($_SESSION['admin_akses'])) {
                                         <td class="btn-sm text-center"><?= $data['nama_user'] ?></td>
                                         <td class="btn-sm text-center"><?= $data['username'] ?></td>
                                         <td class="btn-sm text-center"><?= $data['status'] ?></td>
-                                        <td class="btn-sm text-center">
-                                            <a href="edit_asset.php?id=<?= $data['login_id'] ?>" class="btn btn-danger btn-sm">EDIT</a>
-                                            <a href="#" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#aksesModal<?= $data['login_id'] ?>">Nonaktif User</a>
+                                        <td class="btn-sm text-center d-flex">
+                                            <a href="edit_asset.php?id=<?= $data['login_id'] ?>" class="btn btn-danger btn-sm me-2">EDIT</a>
+                                            <a href="#" class="btn btn-info btn-sm " data-bs-toggle="modal" data-bs-target="#aksesModal<?= $data['login_id'] ?>">Nonaktif</a>
                                         </td>
                                     </tr>
                                     <!-- Modal NON AKtif 111 -->
