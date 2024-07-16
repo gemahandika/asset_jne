@@ -127,7 +127,6 @@ if (isset($_POST['login'])) {
                     echo "<h6 style='color: red;'>$err</h6>";
                   }
                   ?>
-                  <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> -->
                 </div>
                 <button type="submit" name="login" class="btn btn-primary btn-block"><strong>LOGIN</strong></button>
               </form>
