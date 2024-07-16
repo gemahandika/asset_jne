@@ -1,2 +1,2 @@
 <?php
-header("location:public/views/dashboard/home.php");
+header("location:public/views/login/login.php");

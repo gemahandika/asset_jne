@@ -149,7 +149,7 @@ $time = date("H:i");
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label">STATUS <strong class="text-danger">*</strong></label>
+                                        <label class="control-label">UNIT <strong class="text-danger">*</strong></label>
                                         <select class="form-control" name="status" type="text" id="status" required>
                                             <option value="IT">IT</option>
                                             <option value="GA">GA</option>

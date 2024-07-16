@@ -4,6 +4,8 @@ include '../../../app/models/Dashboard_models.php';
 $date = date("Y-m-d");
 $time = date("H:i");
 
+
+
 ?>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -70,88 +72,98 @@ $ke = isset($_GET['ke']) ? $_GET['ke'] : '';
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-primary bubble-shadow-small">
-                                    <i class="fas fa-layer-group"></i>
+            <?php if (has_access($allowed_roles)) { ?>
+                <div class="col-sm-6 col-md-3">
+                    <div class="card card-stats card-round">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-icon">
+                                    <div class="icon-big text-center icon-primary bubble-shadow-small">
+                                        <i class="fas fa-layer-group"></i>
+                                    </div>
+                                </div>
+
+                                <div class="col col-stats ms-3 ms-sm-0">
+                                    <div class="numbers">
+                                        <p class="card-category">Data Asset GA & IT</p>
+                                        <a href="../asset/index.php">
+                                            <h4 class="card-title"><?= $asset; ?></h4>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php if (has_access($allowed_ga)) { ?>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-icon">
+                                        <div class="icon-big text-center icon-info bubble-shadow-small">
+                                            <i class="fas fa-users-cog"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col col-stats ms-3 ms-sm-0">
+                                        <div class="numbers">
+                                            <p class="card-category">Maintenance GA</p>
+                                            <a href="../maintenance/ga.php">
+                                                <h4 class="card-title"><?= $maintenance_ga; ?></h4>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col col-stats ms-3 ms-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">Data Asset GA & IT</p>
-                                    <a href="../asset/index.php">
-                                        <h4 class="card-title"><?= $asset; ?></h4>
-                                    </a>
+                        </div>
+                    </div>
+                <?php } ?>
+                <?php if (has_access($allowed_it)) { ?>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="card card-stats card-round">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-icon">
+                                        <div class="icon-big text-center icon-success bubble-shadow-small">
+                                            <i class="fas fa-laptop"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col col-stats ms-3 ms-sm-0">
+                                        <div class="numbers">
+                                            <p class="card-category">Maintenance IT</p>
+                                            <a href="../maintenance/it.php">
+                                                <h4 class="card-title"><?= $maintenance_it; ?></h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+                <div class="col-sm-6 col-md-3">
+                    <div class="card card-stats card-round">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-icon">
+                                    <div class="icon-big text-center icon-danger bubble-shadow-small">
+                                        <i class="fas fa-trash"></i>
+                                    </div>
+                                </div>
+                                <div class="col col-stats ms-3 ms-sm-0">
+                                    <div class="numbers">
+                                        <p class="card-category">Asset Destroy</p>
+                                        <a href="../asset/destroy.php">
+                                            <h4 class="card-title"><?= $asset_destroy; ?></h4>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-info bubble-shadow-small">
-                                    <i class="fas fa-users-cog"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats ms-3 ms-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">Maintenance GA</p>
-                                    <a href="../maintenance/index.php">
-                                        <h4 class="card-title"><?= $maintenance_ga; ?></h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-success bubble-shadow-small">
-                                    <i class="fas fa-laptop"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats ms-3 ms-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">Maintenance IT</p>
-                                    <a href="../maintenance/index.php">
-                                        <h4 class="card-title"><?= $maintenance_it; ?></h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-danger bubble-shadow-small">
-                                    <i class="fas fa-trash"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats ms-3 ms-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">Asset Destroy</p>
-                                    <h4 class="card-title"><?= $asset_destroy; ?></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
             <div class="col-sm-6 col-md-3">
                 <div class="card card-stats card-round">
                     <div class="card-body">
@@ -163,8 +175,10 @@ $ke = isset($_GET['ke']) ? $_GET['ke'] : '';
                             </div>
                             <div class="col col-stats ms-3 ms-sm-0">
                                 <div class="numbers">
-                                    <p class="card-category">Data Assessment</p>
-                                    <h4 class="card-title"><?= $asset_assessment; ?></h4>
+                                    <p class="card-category">Data ASM</p>
+                                    <a href="../assessment/index.php">
+                                        <h4 class="card-title"><?= $asset_assessment; ?></h4>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -172,33 +186,34 @@ $ke = isset($_GET['ke']) ? $_GET['ke'] : '';
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Data Asset</div>
+        <?php if (has_access($allowed_roles)) { ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Data Asset</div>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div>
-                            <canvas id="myChart"></canvas>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Data Asset</div>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <canvas id="myPieChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Data Asset</div>
-                    </div>
-                    <div class="card-body">
-                        <div>
-                            <canvas id="myPieChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <?php } ?>
     </div>
 </div>
 <?php

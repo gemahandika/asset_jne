@@ -1,12 +1,21 @@
 <?php
 include '../../header.php';
 // include 'modal2.php';
+if (!has_access($allowed_asm)) {
+    $eror = "Ooopss!! Kamu Bukan User ASM";
+} else {
+    $eror = ""; // Kosongkan variabel error jika user memiliki akses
+}
 ?>
 
 <div class="container">
     <div class="page-inner">
         <div class="row">
             <h5 class="btn">
+                <?php if ($eror) : ?>
+                    <h5><?= $eror ?></h5>
+                    <?php exit(); ?>
+                <?php endif; ?>
                 <strong>- DATA ASM -</strong>
             </h5>
             <div class="col-md-12">

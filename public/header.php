@@ -1,5 +1,16 @@
 <?php
+session_start();
+if (!isset($_SESSION['admin_username'])) {
+    header("location:../login/login.php");
+}
 include '../../../app/config/koneksi.php';
+include '../../../app/models/Hak_akses.php';
+$user1 = $_SESSION['admin_username'];
+$sql = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$user1'") or die(mysqli_error($koneksi));
+$data1 = $sql->fetch_array();
+$data2 = $data1["nip"];
+// $saldo_user = mysqli_query($koneksi, "SELECT * FROM tb_anggota WHERE nip ='$data2'") or die(mysqli_error($koneksi));
+// $data_saldo_user = mysqli_fetch_array($saldo_user);
 ?>
 
 <!DOCTYPE html>
@@ -79,89 +90,105 @@ include '../../../app/config/koneksi.php';
                             <span class="sidebar-mini-icon">
                                 <i class="fa fa-ellipsis-h"></i>
                             </span>
-                            <h4 class="text-section">ADMIN</h4>
+                            <h4 class="text-section"><?= $data1['nama_user'] ?></h4>
                         </li>
-                        <li class="nav-item">
-                            <a href="../dashboard/home.php" class="collapsed" aria-expanded="false">
-                                <i class="fas fa-home"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#asset">
-                                <i class="fas fa-layer-group"></i>
-                                <p>Asset</p>
-                                <span class="caret"></span>
-                            </a>
-                            <div class="collapse" id="asset">
-                                <ul class="nav nav-collapse">
-                                    <li>
-                                        <a href="../asset/add_asset.php">
-                                            <span class="sub-item">Create Asset</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../asset/index.php">
-                                            <span class="sub-item">Data Asset</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../asset/destroy.php">
-                                            <span class="sub-item">Data Destroy</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                        <?php if (has_access($allowed_roles)) { ?>
+                            <li class="nav-item">
+                                <a href="../dashboard/home.php" class="collapsed" aria-expanded="false">
+                                    <i class="fas fa-home"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-bs-toggle="collapse" href="#asset">
+                                    <i class="fas fa-layer-group"></i>
+                                    <p>Asset</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="asset">
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a href="../asset/add_asset.php">
+                                                <span class="sub-item">Create Asset</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../asset/index.php">
+                                                <span class="sub-item">Data Asset</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../asset/destroy.php">
+                                                <span class="sub-item">Data Destroy</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
 
-                        <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#base">
-                                <i class="fas fa-cogs"></i>
-                                <p>Maintenance</p>
-                                <span class="caret"></span>
-                            </a>
-                            <div class="collapse" id="base">
-                                <ul class="nav nav-collapse">
-                                    <li>
-                                        <a href="../maintenance/add_maintenance.php">
-                                            <span class="sub-item">Create Maintenance</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../maintenance/it.php">
-                                            <span class="sub-item">Maintenance IT</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../maintenance/ga.php">
-                                            <span class="sub-item">Maintenance GA</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#assessment">
-                                <i class="fas fa-book"></i>
-                                <p>ASM</p>
-                                <span class="caret"></span>
-                            </a>
-                            <div class="collapse" id="assessment">
-                                <ul class="nav nav-collapse">
-                                    <li>
-                                        <a href="../assessment/add_assessment.php">
-                                            <span class="sub-item">Create ASM</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../assessment/index.php">
-                                            <span class="sub-item">Data ASM</span>
-                                        </a>
-                                    </li>
+                            <li class="nav-item">
+                                <a data-bs-toggle="collapse" href="#base">
+                                    <i class="fas fa-cogs"></i>
+                                    <p>Maintenance</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="base">
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a href="../maintenance/add_maintenance.php">
+                                                <span class="sub-item">Create Maintenance</span>
+                                            </a>
+                                        </li>
+                                        <?php if (has_access($allowed_it)) { ?>
+                                            <li>
+                                                <a href="../maintenance/it.php">
+                                                    <span class="sub-item">Maintenance IT</span>
+                                                </a>
+                                            </li>
+                                        <?php } ?>
+                                        <?php if (has_access($allowed_ga)) { ?>
+                                            <li>
+                                                <a href="../maintenance/ga.php">
+                                                    <span class="sub-item">Maintenance GA</span>
+                                                </a>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
+                            </li>
+                        <?php } ?>
+                        <?php if (has_access($allowed_asm)) { ?>
+                            <li class="nav-item">
+                                <a data-bs-toggle="collapse" href="#assessment">
+                                    <i class="fas fa-book"></i>
+                                    <p>ASM</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="assessment">
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a href="../assessment/add_assessment.php">
+                                                <span class="sub-item">Create ASM</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../assessment/index.php">
+                                                <span class="sub-item">Data ASM</span>
+                                            </a>
+                                        </li>
 
-                                </ul>
-                            </div>
-                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        <?php } ?>
+                        <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
+                            <li class="nav-item">
+                                <a href="../user_app/user.php" class="collapsed" aria-expanded="false">
+                                    <i class="fas fa-user-lock"></i>
+                                    <p>User</p>
+                                </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
@@ -262,11 +289,11 @@ include '../../../app/config/koneksi.php';
                             <li class="nav-item topbar-user dropdown hidden-caret">
                                 <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#" aria-expanded="false">
                                     <div class="avatar-sm">
-                                        <img src="../../../app/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle" />
+                                        <img src="../../../app/assets/img/kurir.png" alt="..." class="avatar-img rounded-circle" />
                                     </div>
                                     <span class="profile-username">
                                         <span class="op-7">Hi,</span>
-                                        <span class="fw-bold">Hizrian</span>
+                                        <span class="fw-bold"><?= $data1['nama_user']; ?></span>
                                     </span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -274,7 +301,7 @@ include '../../../app/config/koneksi.php';
                                         <li>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="#">My Profile</a>
-                                            <a class="dropdown-item" href="#">Logout</a>
+                                            <a class="dropdown-item" href="../login/logout.php">Logout</a>
                                         </li>
                                     </div>
                                 </ul>

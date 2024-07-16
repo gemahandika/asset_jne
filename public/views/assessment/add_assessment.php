@@ -2,6 +2,11 @@
 include '../../header.php';
 $date = date("Y-m-d");
 $time = date("H:i");
+if (!has_access($allowed_asm)) {
+    $eror = "Ooopss!! Kamu Bukan User ASM";
+} else {
+    $eror = ""; // Kosongkan variabel error jika user memiliki akses
+}
 ?>
 <style>
     .result {
@@ -17,6 +22,10 @@ $time = date("H:i");
 <div class="container">
     <div class="page-inner">
         <div class="row">
+            <?php if ($eror) : ?>
+                <h5><?= $eror ?></h5>
+                <?php exit(); ?>
+            <?php endif; ?>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
