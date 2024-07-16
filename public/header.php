@@ -92,13 +92,14 @@ $data2 = $data1["nip"];
                             </span>
                             <h4 class="text-section"><?= $data1['nama_user'] ?></h4>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="../dashboard/home.php" class="collapsed" aria-expanded="false">
+                                <i class="fas fa-home"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
                         <?php if (has_access($allowed_roles)) { ?>
-                            <li class="nav-item">
-                                <a href="../dashboard/home.php" class="collapsed" aria-expanded="false">
-                                    <i class="fas fa-home"></i>
-                                    <p>Dashboard</p>
-                                </a>
-                            </li>
                             <li class="nav-item">
                                 <a data-bs-toggle="collapse" href="#asset">
                                     <i class="fas fa-layer-group"></i>
