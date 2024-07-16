@@ -186,7 +186,7 @@ $ke = isset($_GET['ke']) ? $_GET['ke'] : '';
                 </div>
             </div>
         </div>
-        <?php if (has_access($allowed_roles)) { ?>
+        <?php if (has_access($allowed_asm)) { ?>
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
