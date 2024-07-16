@@ -115,7 +115,7 @@ if (isset($_POST['login'])) {
               <form action="" method="post">
                 <label for="username">Username</label>
                 <div class="form-group first">
-                  <input class="form-control" id="username" value="<?php echo htmlspecialchars($username, ENT_QUOTES, 'UTF-8') ?>" type="text" name="username" placeholder="Username" autofocus>
+                  <input class="form-control" id="username" value="<?php echo htmlspecialchars($username, ENT_QUOTES, 'UTF-8') ?>" type="text" name="username" autofocus>
                 </div>
                 <label for="password">Password</label>
                 <div class="form-group last mb-4">
