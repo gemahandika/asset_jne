@@ -164,56 +164,58 @@ $ke = isset($_GET['ke']) ? $_GET['ke'] : '';
                     </div>
                 </div>
             <?php } ?>
-            <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
+            <?php if (has_access($allowed_asm)) { ?>
+                <div class="col-sm-6 col-md-3">
+                    <div class="card card-stats card-round">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-icon">
+                                    <div class="icon-big text-center icon-secondary bubble-shadow-small">
+                                        <i class="fas fa-book"></i>
+                                    </div>
+                                </div>
+                                <div class="col col-stats ms-3 ms-sm-0">
+                                    <div class="numbers">
+                                        <p class="card-category">Data ASM</p>
+                                        <a href="../assessment/index.php">
+                                            <h4 class="card-title"><?= $asset_assessment; ?></h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    <?php } ?>
+    <?php if (has_access($allowed_roles)) { ?>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Data Asset</div>
+                    </div>
                     <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-secondary bubble-shadow-small">
-                                    <i class="fas fa-book"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats ms-3 ms-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">Data ASM</p>
-                                    <a href="../assessment/index.php">
-                                        <h4 class="card-title"><?= $asset_assessment; ?></h4>
-                                    </a>
-                                </div>
-                            </div>
+                        <div>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Data Asset</div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <canvas id="myPieChart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <?php if (has_access($allowed_asm)) { ?>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Data Asset</div>
-                        </div>
-                        <div class="card-body">
-                            <div>
-                                <canvas id="myChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Data Asset</div>
-                        </div>
-                        <div class="card-body">
-                            <div>
-                                <canvas id="myPieChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
+    <?php } ?>
     </div>
 </div>
 <?php
