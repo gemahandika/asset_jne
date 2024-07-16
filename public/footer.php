@@ -35,9 +35,9 @@
 <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
 <script>
     new DataTable('#example', {
-        paging: true,
-        scrollCollapse: false,
-        // scrollY: '300px'
+        paging: false,
+        scrollCollapse: true,
+        scrollY: '300px'
     });
 </script>
 
