@@ -54,7 +54,7 @@ $time = date("H:i");
 
                                     <div class="form-group">
                                         <label for="tgl_pembelian">TANGGAL PEMBELIAN :</label><br>
-                                        <input class="form-control" type="date" id="tgl_pembelian" name="tgl_pembelian" value="<?= $date ?>" required>
+                                        <input class="form-control" type="date" id="tgl_pembelian" name="tgl_pembelian" value="<?= $date ?>">
                                     </div>
 
                                     <div class="form-group">
