@@ -70,6 +70,7 @@ $time = date("H:i");
                                             <option value="JTR">JTR</option>
                                             <option value="CCC">CCC</option>
                                             <option value="IT">IT</option>
+                                            <option value="FINANCE">FINANCE</option>
                                             <option value="FULLFILMENT">FULLFILMENT</option>
                                             <option value="CR3">CR3</option>
                                             <option value="PICKUP">PICKUP</option>
