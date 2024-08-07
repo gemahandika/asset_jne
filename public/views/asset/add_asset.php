@@ -34,16 +34,24 @@ $time = date("H:i");
                                     </div>
 
                                     <div class="form-group">
-                                        <!-- <button type="submit" name="approve" class="btn btn-primary"><i class="fa fa-search"></i>Cari</button> -->
                                         <a href="add_asset.php" type="submit" name="approve" class="btn btn-warning"><i class="fa fa-refresh"></i>Refresh</a>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">BRANCH <strong class="text-danger">*</strong></label>
-                                        <select class="form-control" name="branch" type="text" id="branch" required>
-                                            <option value="KCU MEDAN">KCU MEDAN</option>
-                                            <option value="CABANG">CABANG</option>
-                                            <option value="AGEN">AGEN</option>
+                                        <select class="form-control" id="branch" name="branch" aria-label="Default select example" required>
+                                            <option value="">- Pilih Cabang -</option>
+                                            <?php
+                                            $no = 1;
+                                            $sql = mysqli_query($koneksi, "SELECT * FROM tb_cabang") or die(mysqli_error($koneksi));
+                                            $result = array();
+                                            while ($data = mysqli_fetch_array($sql)) {
+                                                $result[] = $data;
+                                            }
+                                            foreach ($result as $data) {
+                                            ?>
+                                                <option value="<?= $data['nama_cabang'] ?>"><?= $no++; ?>. <?= $data['nama_cabang'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
 
