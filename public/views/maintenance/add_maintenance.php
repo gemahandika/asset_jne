@@ -85,11 +85,19 @@ $time = date("H:i");
 
                                     <div class="form-group">
                                         <label class="control-label">BRANCH <strong class="text-danger">*</strong></label>
-                                        <select class="form-control" name="branch" type="text" id="branch" required>
-                                            <option value="<?= $data1['branch']; ?>"><?= $data1['branch']; ?></option>
-                                            <option value="KCU MEDAN">KCU MEDAN</option>
-                                            <option value="CABANG">CABANG</option>
-                                            <option value="AGEN">AGEN</option>
+                                        <select class="form-control" id="branch" name="branch" aria-label="Default select example" required>
+                                            <option value="">- Pilih Cabang -</option>
+                                            <?php
+                                            $no = 1;
+                                            $sql = mysqli_query($koneksi, "SELECT * FROM tb_cabang") or die(mysqli_error($koneksi));
+                                            $result = array();
+                                            while ($data = mysqli_fetch_array($sql)) {
+                                                $result[] = $data;
+                                            }
+                                            foreach ($result as $data) {
+                                            ?>
+                                                <option value="<?= $data['nama_cabang'] ?>"><?= $no++; ?>. <?= $data['nama_cabang'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
 
@@ -119,7 +127,7 @@ $time = date("H:i");
                                             <option value="KP TOMANG">KP TOMANG</option>
                                             <option value="KP MARELAN">KP MARELAN</option>
                                             <option value="KP THAMRIN">KP THAMRIN</option>
-                                            <option value="LAINNYA">LAINNYA</option>
+                                            <option value="AGEN">AGEN</option>
                                         </select>
                                     </div>
 
