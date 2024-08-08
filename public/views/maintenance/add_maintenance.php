@@ -128,6 +128,7 @@ $time = date("H:i");
                                             <option value="KP MARELAN">KP MARELAN</option>
                                             <option value="KP THAMRIN">KP THAMRIN</option>
                                             <option value="AGEN">AGEN</option>
+                                            <option value="ADMIN DELIVERY">ADMIN DELIVERY</option>
                                         </select>
                                     </div>
 
