@@ -2,6 +2,10 @@
 include '../../header.php';
 $date = date("Y-m-d");
 $time = date("H:i");
+
+$id_maintenance = $_GET['id'];
+$sql = mysqli_query($koneksi, "SELECT * FROM maintenance WHERE id_maintenance = '$id_maintenance'") or die(mysqli_error($koneksi));
+$data = mysqli_fetch_array($sql);
 ?>
 <style>
     .result {
@@ -20,59 +24,25 @@ $time = date("H:i");
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Tambah Data Maintenance</div>
+                        <div class="card-title">Edit Data Maintenance</div>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 col-lg-4">
-                                <form action="" method="get">
-                                    <div class="form-group has-success">
-                                        <div id="resultDisplay">Scan Disini</div>
-                                        <div style="width:300px;" id="reader"></div><br>
-                                        <label for="no_asset">CARI NO ASSET :</label><br>
-                                        <input class="form-control" type="text" id="no_asset" name="no_asset" style="text-transform: uppercase;">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button type="submit" name="approve" class="btn btn-primary"><i class="fa fa-search"></i> Cari</button>
-                                        <a href="add_maintenance.php" type="submit" name="approve" class="btn btn-warning"><i class="fa fa-refresh"></i>Refresh</a>
-                                    </div>
-                                </form>
-                                <?php
-                                // data sebelum memilih data no asset
-                                $no_asset = "";
-                                $data1['nama_barang'] = "";
-                                $data1['katagori'] = "";
-                                $data1['branch'] = "";
-                                $data1['unit'] = "";
-                                // end
-                                if (isset($_GET['no_asset'])) {
-                                    $no_asset = $_GET['no_asset'];
-                                    $sql = mysqli_query($koneksi, "SELECT * FROM asset WHERE no_asset = '$no_asset'") or die(mysqli_error($koneksi));
-                                    if (mysqli_num_rows($sql) > 0) {
-                                        $data1 = $sql->fetch_array();
-                                    } else {
-                                        $data1['nama_barang'] = "Data not found";
-                                        $data1['katagori'] = "Data not found";
-                                        $data1['branch'] = "Data not found";
-                                        $data1['unit'] = "Data not found";
-                                    }
-                                }
-                                ?>
                                 <form action="../../../app/controller/Maintenance.php" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="nama_barang">NO ASSET <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="no_asset" name="no_asset" value=" <?= $no_asset ?>" style="text-transform: uppercase;" required>
+                                        <input class="form-control" type="text" id="no_asset" name="no_asset" value=" <?= $data['no_asset'] ?>" style="text-transform: uppercase;" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_barang">NAMA BARANG <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="nama_barang" name="nama_barang" value="<?= $data1['nama_barang']; ?>" style="text-transform: uppercase;" required>
+                                        <input class="form-control" type="text" id="nama_barang" name="nama_barang" value="<?= $data['nama_barang']; ?>" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">KATAGORI <strong class="text-danger">*</strong></label>
                                         <select class="form-control" name="katagori" type="text" id="katagori" required>
-                                            <option value="<?= $data1['katagori']; ?>"><?= $data1['katagori']; ?></option>
+                                            <option value="<?= $data['katagori']; ?>"><?= $data['katagori']; ?></option>
                                             <option value="FURNITURE">FURNITURE</option>
                                             <option value="MACH&EQUIP">MACH & EQUIP</option>
                                             <option value="LAND">LAND</option>
@@ -86,17 +56,17 @@ $time = date("H:i");
                                     <div class="form-group">
                                         <label class="control-label">BRANCH <strong class="text-danger">*</strong></label>
                                         <select class="form-control" id="branch" name="branch" aria-label="Default select example" required>
-                                            <option value="">- Pilih Cabang -</option>
+                                            <option value="<?= $data['branch']; ?>"><?= $data['branch']; ?></option>
                                             <?php
                                             $no = 1;
-                                            $sql = mysqli_query($koneksi, "SELECT * FROM tb_cabang") or die(mysqli_error($koneksi));
+                                            $sql1 = mysqli_query($koneksi, "SELECT * FROM tb_cabang") or die(mysqli_error($koneksi));
                                             $result = array();
-                                            while ($data = mysqli_fetch_array($sql)) {
-                                                $result[] = $data;
+                                            while ($data1 = mysqli_fetch_array($sql1)) {
+                                                $result1[] = $data1;
                                             }
-                                            foreach ($result as $data) {
+                                            foreach ($result1 as $data1) {
                                             ?>
-                                                <option value="<?= $data['nama_cabang'] ?>"><?= $no++; ?>. <?= $data['nama_cabang'] ?></option>
+                                                <option value="<?= $data1['nama_cabang'] ?>"><?= $no++; ?>. <?= $data1['nama_cabang'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -104,7 +74,7 @@ $time = date("H:i");
                                     <div class="form-group">
                                         <label class="control-label">UNIT <strong class="text-danger">*</strong></label>
                                         <select class="form-control" name="unit" type="text" id="unit" required>
-                                            <option value="<?= $data1['unit']; ?>"><?= $data1['unit']; ?></option>
+                                            <option value="<?= $data['unit']; ?>"> <?= $data['unit']; ?></option>
                                             <option value="OUTBOUND">OUTBOUND</option>
                                             <option value="INBOUND">INBOUND</option>
                                             <option value="GA">GA</option>
@@ -134,45 +104,46 @@ $time = date("H:i");
 
                                     <div class="form-group">
                                         <label for="pic_gait">PIC GA & IT <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="pic_gait" name="pic_gait" style="text-transform: uppercase;" required>
+                                        <input class="form-control" type="text" id="pic_gait" name="pic_gait" value="<?= $data['pic_gait']; ?>" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="tgl_req">TANGGAL REQUEST <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="date" id="tgl_req" name="tgl_req" value="<?= $date; ?>" required>
+                                        <input class="form-control" type="date" id="tgl_req" name="tgl_req" value="<?= $data['tgl_req']; ?>" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="pic_req">PIC REQUEST <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="pic_req" name="pic_req" style="text-transform: uppercase;" required>
+                                        <input class="form-control" type="text" id="pic_req" name="pic_req" value="<?= $data['pic_req']; ?>" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="kendala">KENDALA <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="text" id="kendala" name="kendala" style="text-transform: uppercase;" required>
+                                        <input class="form-control" type="text" id="kendala" name="kendala" value="<?= $data['kendala']; ?>" style="text-transform: uppercase;" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="tgl_solved">TANGGAL SOLVED <strong class="text-danger">*</strong></label><br>
-                                        <input class="form-control" type="date" id="tgl_solved" name="tgl_solved" value="<?= $date; ?>" required>
+                                        <input class="form-control" type="date" id="tgl_solved" name="tgl_solved" value="<?= $data['tgl_solved']; ?>" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">GA / IT <strong class="text-danger">*</strong></label>
                                         <select class="form-control" name="status" type="text" id="status" required>
+                                            <option value="<?= $data['status']; ?>"><?= $data['status']; ?></option>
                                             <option value="IT">IT</option>
                                             <option value="GA">GA</option>
                                         </select>
                                     </div>
 
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="file">IMAGE :</label><br>
                                         <input class="form-control" type="file" id="file" name="file">
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group">
                                         <label for="keterangan">KETERANGAN :</label><br>
-                                        <input class="form-control" type="text" id="keterangan" name="keterangan" style="text-transform: uppercase;" required>
+                                        <input class="form-control" type="text" id="keterangan" name="keterangan" value="<?= $data['keterangan']; ?>" style="text-transform: uppercase;" required>
                                     </div>
                                     <div class="card-action">
                                         <button class="btn btn-success" type="submit" name="add_maintenance">CREATE</button>

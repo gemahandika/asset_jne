@@ -75,7 +75,7 @@ if (!has_access($allowed_it)) {
                                         <td><a href="#" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id_maintenance'] ?>">Photo</a></td>
                                         <td class="btn-sm text-center"><?= $data['keterangan'] ?></td>
                                         <td class="btn-sm text-center">
-                                            <a href="edit_asset.php?id=<?= $data['id_maintenance'] ?>" class="btn btn-danger btn-sm">EDIT</a>
+                                            <a href="edit.php?id=<?= $data['id_maintenance'] ?>" class="btn btn-danger btn-sm">EDIT</a>
                                         </td>
                                     </tr>
                                     <!-- Modal Edit -->

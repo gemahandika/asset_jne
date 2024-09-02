@@ -32,7 +32,7 @@ $data = mysqli_fetch_array($sql);
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12 col-lg-4">
-                                    <input type="text" name="id" value="<?= $data['id_asset'] ?>" readonly>
+                                    <input type="hidden" name="id" value="<?= $data['id_asset'] ?>" readonly>
                                     <div class="form-group has-success">
                                         <!-- <div id="resultDisplay">Scan Disini</div>
                                         <div style="width:300px;" id="reader"></div><br> -->
