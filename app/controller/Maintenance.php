@@ -53,4 +53,27 @@ if (isset($_POST['add_maintenance'])) {
     } else {
         echo '<script> alert("Gagal menyimpan data.") </script>';
     }
+} else if (isset($_POST['edit_maintenance'])) {
+    $id = trim(mysqli_real_escape_string($koneksi, $_POST['id_maintenance']));
+    $no_asset = trim(mysqli_real_escape_string($koneksi, $_POST['no_asset']));
+    $nama_barang = trim(mysqli_real_escape_string($koneksi, $_POST['nama_barang']));
+    $katagori = trim(mysqli_real_escape_string($koneksi, $_POST['katagori']));
+    $branch = trim(mysqli_real_escape_string($koneksi, $_POST['branch']));
+    $unit = trim(mysqli_real_escape_string($koneksi, $_POST['unit']));
+    $pic_gait = trim(mysqli_real_escape_string($koneksi, $_POST['pic_gait']));
+    $tgl_req = trim(mysqli_real_escape_string($koneksi, $_POST['tgl_req']));
+    $pic_req = trim(mysqli_real_escape_string($koneksi, $_POST['pic_req']));
+    $kendala = trim(mysqli_real_escape_string($koneksi, $_POST['kendala']));
+    $tgl_solved = trim(mysqli_real_escape_string($koneksi, $_POST['tgl_solved']));
+    $status = trim(mysqli_real_escape_string($koneksi, $_POST['status']));
+    $keterangan = mysqli_real_escape_string($koneksi, $_POST['keterangan']);
+
+
+    mysqli_query($koneksi, "UPDATE maintenance SET pic_gait='$pic_gait', no_asset='$no_asset', tgl_req='$tgl_req', nama_barang='$nama_barang', katagori='$katagori',
+    branch='$branch', unit='$unit', pic_req='$pic_req', kendala='$kendala', tgl_solved='$tgl_solved', status='$status' , keterangan='$keterangan' WHERE id_maintenance='$id'");
+
+    // mysqli_query($koneksi, "UPDATE asset SET branch='$branch', nama_barang='$nama_barang', tgl_pembelian='$tgl_pembelian', unit='$unit', pic='$pic',
+    // katagori='$katagori', kondisi='$kondisi', tgl_pendataan='$tgl_data', status='$status'WHERE id_asset='$id'");
+
+    showSweetAlert('success', 'Success', $pesan_update, '#3085d6', $tujuan_maintenance);
 }

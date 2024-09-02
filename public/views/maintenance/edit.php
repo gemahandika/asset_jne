@@ -30,6 +30,7 @@ $data = mysqli_fetch_array($sql);
                         <div class="row">
                             <div class="col-md-12 col-lg-4">
                                 <form action="../../../app/controller/Maintenance.php" method="post" enctype="multipart/form-data">
+                                    <input type="text" name="id_maintenance" value=" <?= $data['id_maintenance'] ?>" required readonly>
                                     <div class="form-group">
                                         <label for="nama_barang">NO ASSET <strong class="text-danger">*</strong></label><br>
                                         <input class="form-control" type="text" id="no_asset" name="no_asset" value=" <?= $data['no_asset'] ?>" style="text-transform: uppercase;" required>
@@ -146,7 +147,7 @@ $data = mysqli_fetch_array($sql);
                                         <input class="form-control" type="text" id="keterangan" name="keterangan" value="<?= $data['keterangan']; ?>" style="text-transform: uppercase;" required>
                                     </div>
                                     <div class="card-action">
-                                        <button class="btn btn-success" type="submit" name="add_maintenance">CREATE</button>
+                                        <button class="btn btn-success" type="submit" name="edit_maintenance">UPDATE</button>
                                     </div>
                                 </form>
                             </div>
