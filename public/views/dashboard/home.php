@@ -164,7 +164,7 @@ $ke = isset($_GET['ke']) ? $_GET['ke'] : '';
                     </div>
                 </div>
             <?php } ?>
-            <?php if (has_access($allowed_asm)) { ?>
+            <!-- <?php if (has_access($allowed_asm)) { ?>
                 <div class="col-sm-6 col-md-3">
                     <div class="card card-stats card-round">
                         <div class="card-body">
@@ -186,36 +186,37 @@ $ke = isset($_GET['ke']) ? $_GET['ke'] : '';
                         </div>
                     </div>
                 </div>
+            <?php } ?> -->
         </div>
-    <?php } ?>
-    <?php if (has_access($allowed_roles)) { ?>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Data Asset</div>
+
+        <?php if (has_access($allowed_roles)) { ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Data Asset</div>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div>
-                            <canvas id="myChart"></canvas>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Data Asset</div>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <canvas id="myPieChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Data Asset</div>
-                    </div>
-                    <div class="card-body">
-                        <div>
-                            <canvas id="myPieChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php } ?>
+        <?php } ?>
     </div>
 </div>
 <?php

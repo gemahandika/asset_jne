@@ -158,7 +158,7 @@ $data2 = $data1["nip"];
                                 </div>
                             </li>
                         <?php } ?>
-                        <?php if (has_access($allowed_asm)) { ?>
+                        <!-- <?php if (has_access($allowed_asm)) { ?>
                             <li class="nav-item">
                                 <a data-bs-toggle="collapse" href="#assessment">
                                     <i class="fas fa-book"></i>
@@ -181,7 +181,7 @@ $data2 = $data1["nip"];
                                     </ul>
                                 </div>
                             </li>
-                        <?php } ?>
+                        <?php } ?> -->
                         <?php if (in_array("super_admin", $_SESSION['admin_akses'])) { ?>
                             <li class="nav-item">
                                 <a href="../user_app/user.php" class="collapsed" aria-expanded="false">
